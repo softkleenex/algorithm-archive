@@ -1,6 +1,18 @@
 import os
 import glob
 import re
+import subprocess
+import time
+
+def force_icloud_download(filepath):
+    try:
+        # macOS specific command to force download from iCloud
+        subprocess.run(['brctl', 'download', filepath], check=True, capture_output=True)
+        time.sleep(0.5) # Give it a moment to download
+        return True
+    except Exception as e:
+        print(f"Failed to force download: {e}")
+        return False
 
 def get_language_from_ext(ext):
     ext_map = {
@@ -18,11 +30,32 @@ def get_language_from_ext(ext):
     }
     return ext_map.get(ext.lower(), "")
 
+def read_file_content(filepath):
+    try:
+        with open(filepath, 'r', encoding='utf-8') as f:
+            return f.read()
+    except OSError as e:
+        if e.errno == 11: # Resource deadlock avoided
+            print(f"File locked by iCloud, attempting to read using cat: {filepath}")
+            # Try to force download, but don't wait for it
+            force_icloud_download(filepath)
+            try:
+                # Use cat to bypass the python open() restriction
+                result = subprocess.run(['cat', filepath], check=True, capture_output=True, text=True)
+                return result.stdout
+            except Exception as e2:
+                print(f"Warning: Could not read {filepath} even with cat: {e2}")
+                return None
+        else:
+            print(f"Warning: Could not read {filepath} due to error: {e}")
+            return None
+
 def format_readme(readme_path):
     dir_path = os.path.dirname(readme_path)
     
-    with open(readme_path, 'r', encoding='utf-8') as f:
-        content = f.read()
+    content = read_file_content(readme_path)
+    if content is None:
+        return False
         
     code_files = [f for f in os.listdir(dir_path) if f != "README.md" and not f.endswith(".md") and os.path.isfile(os.path.join(dir_path, f))]
     
@@ -102,13 +135,16 @@ def create_md_for_standalone_code(code_path):
         
     md_path = os.path.join(dir_path, f"{name}.md")
     
-    with open(code_path, 'r', encoding='utf-8') as cf:
-        code_content = cf.read()
+    code_content = read_file_content(code_path)
+    if code_content is None:
+        return False
 
     # If a markdown file with the same name already exists, update it
     if os.path.exists(md_path):
-        with open(md_path, 'r', encoding='utf-8') as f:
-            content = f.read()
+        content = read_file_content(md_path)
+        if content is None:
+            return False
+            
         if "## 💻 코드" in content:
             parts = content.split("## 💻 코드")
             new_content = parts[0] + f"## 💻 코드\n\n```{language}\n{code_content}\n```\n"

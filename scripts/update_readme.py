@@ -2,6 +2,18 @@ import os
 import glob
 import re
 import urllib.parse
+import subprocess
+import time
+
+def force_icloud_download(filepath):
+    try:
+        # macOS specific command to force download from iCloud
+        subprocess.run(['brctl', 'download', filepath], check=True, capture_output=True)
+        time.sleep(0.5) # Give it a moment to download
+        return True
+    except Exception as e:
+        print(f"Failed to force download: {e}")
+        return False
 
 def get_problem_info(filepath):
     platform = "Unknown"
@@ -78,8 +90,22 @@ def update_readme():
         
     stats_md += "\n</details>\n<!-- problems:end -->"
 
-    with open("README.md", "r", encoding="utf-8") as f:
-        readme_content = f.read()
+    try:
+        with open("README.md", "r", encoding="utf-8") as f:
+            readme_content = f.read()
+    except OSError as e:
+        if e.errno == 11:
+            print(f"README.md locked by iCloud, attempting to download and read with cat...")
+            force_icloud_download("README.md")
+            try:
+                result = subprocess.run(['cat', "README.md"], check=True, capture_output=True, text=True)
+                readme_content = result.stdout
+            except Exception as e2:
+                print(f"Warning: Could not read README.md even with cat: {e2}")
+                return
+        else:
+            print(f"Warning: Could not read README.md due to error: {e}")
+            return
 
     if "<!-- problems:start -->" in readme_content:
         new_content = re.sub(
