@@ -2,15 +2,13 @@
 
 # 🚀 Softkleenex's Coding Training
 
-[![Deploy Status](https://github.com/softkleenex/coding_training/actions/workflows/deploy.yml/badge.svg)](https://github.com/softkleenex/coding_training/actions/workflows/deploy.yml)
 [![Auto Format](https://github.com/softkleenex/coding_training/actions/workflows/auto_format.yml/badge.svg)](https://github.com/softkleenex/coding_training/actions/workflows/auto_format.yml)
 [![Obsidian](https://img.shields.io/badge/Obsidian-483699?style=flat&logo=obsidian&logoColor=white)](https://obsidian.md/)
-[![Quartz](https://img.shields.io/badge/Quartz-v4-blue?style=flat)](https://quartz.jzhao.xyz/)
 [![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)](https://www.python.org/)
 
-**알고리즘 문제 풀이 아카이브 및 개인 기술 블로그 (Obsidian + Quartz)**
+**알고리즘 문제 풀이 아카이브 (Obsidian)**
 
-[🌐 블로그 바로가기](https://softkleenex.github.io/coding_training/)
+[🌐 블로그 바로가기](https://softkleenex.github.io/posts/)
 
 </div>
 
@@ -41,7 +39,7 @@
 1. **Solve & Auto-Push:** [BaekjoonHub](https://github.com/BaekjoonHub/BaekjoonHub) 익스텐션을 통해 플랫폼에서 문제를 해결하면 자동으로 저장소에 소스 코드가 커밋됩니다.
 2. **Auto-Formatting:** 새로운 코드가 푸시되면 봇이 파이썬 스크립트(`scripts/format_problems.py`)를 실행하여, 소스 코드를 SEO에 최적화된 마크다운 템플릿 안으로 병합합니다.
 3. **Review & Write:** 로컬 PC 또는 모바일에서 **옵시디언(Obsidian)** 을 켜고, 템플릿 안의 `💡 해결 방법` 영역에 회고를 기록합니다.
-4. **Deploy:** 수정한 글을 `git push`하면, [Quartz 4](https://quartz.jzhao.xyz/) 엔진이 전체 지식 연결망(Graph)을 가진 HTML 웹사이트로 빌드하여 배포합니다.
+4. **Archive:** `git push`로 이 저장소에 보관합니다. 웹 배포는 하지 않습니다 (문제 설명이 원 사이트 발췌라 공개 게시 대상이 아닙니다). 글로 남길 만한 내용은 직접 쓴 회고로 [블로그](https://softkleenex.github.io/posts/)에 올립니다.
 
 ---
 
@@ -50,7 +48,7 @@
 <!-- problems:start -->
 ### 🏆 Algorithm Solving Status
 
-**Total Solved: 395 Problems** (Baekjoon: 382, AtCoder: 13)
+**Total Solved: 397 Problems** (Baekjoon: 382, AtCoder: 15)
 
 <details>
 <summary>💡 <b>전체 풀이 문제 목록 (클릭하여 펼치기)</b></summary>
@@ -442,11 +440,13 @@
 | Baekjoon | 34553 | 알파벳 점수 계산기 | Bronze | [풀이 보기](./content/%EB%B0%B1%EC%A4%80/Bronze/34553.%E2%80%85%E1%84%8B%E1%85%A1%E1%86%AF%E1%84%91%E1%85%A1%E1%84%87%E1%85%A6%E1%86%BA%E2%80%85%E1%84%8C%E1%85%A5%E1%86%B7%E1%84%89%E1%85%AE%E2%80%85%E1%84%80%E1%85%A8%E1%84%89%E1%85%A1%E1%86%AB%E1%84%80%E1%85%B5/README.md) |
 | AtCoder | abc456 | A_Dice | - | [풀이 보기](./content/atcoder/abc456/A_Dice.md) |
 | AtCoder | abc456 | B_456 | - | [풀이 보기](./content/atcoder/abc456/B_456.md) |
+| AtCoder | abc457 | B_Arrays | - | [풀이 보기](./content/atcoder/abc457/B_Arrays.md) |
 | AtCoder | abc452 | B_Draw_Frame | - | [풀이 보기](./content/atcoder/abc452/B_Draw_Frame.md) |
 | AtCoder | abc454 | B_Mapping | - | [풀이 보기](./content/atcoder/abc454/B_Mapping.md) |
 | AtCoder | abc453 | B_Sensor_Data_Logging | - | [풀이 보기](./content/atcoder/abc453/B_Sensor_Data_Logging.md) |
 | AtCoder | abc455 | B_Spiral_Galaxy | - | [풀이 보기](./content/atcoder/abc455/B_Spiral_Galaxy.md) |
 | AtCoder | abc452 | C_Fishbones | - | [풀이 보기](./content/atcoder/abc452/C_Fishbones.md) |
+| AtCoder | abc457 | C_Long_Sequence | - | [풀이 보기](./content/atcoder/abc457/C_Long_Sequence.md) |
 | AtCoder | abc456 | C_Not_Adjacent | - | [풀이 보기](./content/atcoder/abc456/C_Not_Adjacent.md) |
 | AtCoder | abc453 | C_Sneaking_Glances | - | [풀이 보기](./content/atcoder/abc453/C_Sneaking_Glances.md) |
 | AtCoder | abc454 | C_Straw_Millionaire | - | [풀이 보기](./content/atcoder/abc454/C_Straw_Millionaire.md) |
@@ -468,7 +468,5 @@ coding_training/
 │   ├── atcoder/      # AtCoder 콘테스트 문제 풀이
 │   ├── posts/        # 기술 블로그 포스트 및 에세이
 │   └── index.md      # 블로그 대문(Landing Page)
-├── scripts/          # 문제 템플릿 포맷팅 및 통계 갱신 Python 스크립트
-├── quartz/           # 블로그 렌더링 엔진 코어 (TypeScript/React)
-└── quartz.config.ts  # 블로그 설정 파일 (SEO, 테마, 플러그인)
+└── scripts/          # 문제 템플릿 포맷팅 및 통계 갱신 Python 스크립트
 ```
