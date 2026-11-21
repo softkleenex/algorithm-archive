@@ -2,7 +2,7 @@
 
 # 🚀 Softkleenex's Coding Training
 
-[![Auto Format](https://github.com/softkleenex/coding_training/actions/workflows/auto_format.yml/badge.svg)](https://github.com/softkleenex/coding_training/actions/workflows/auto_format.yml)
+[![Auto Format](https://github.com/softkleenex/algorithm-archive/actions/workflows/auto_format.yml/badge.svg)](https://github.com/softkleenex/algorithm-archive/actions/workflows/auto_format.yml)
 [![Obsidian](https://img.shields.io/badge/Obsidian-483699?style=flat&logo=obsidian&logoColor=white)](https://obsidian.md/)
 [![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)](https://www.python.org/)
 
