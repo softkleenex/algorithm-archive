@@ -5,8 +5,8 @@ on:
     branches:
       - main
     paths:
-      - 'content/백준/**/README.md'
-      - 'content/atcoder/**/README.md'
+      - 'problems/백준/**/README.md'
+      - 'problems/atcoder/**/README.md'
 
 permissions:
   contents: write
@@ -33,7 +33,7 @@ jobs:
         run: |
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git add content/
+          git add problems/
           # Only commit if there are changes
           if ! git diff-index --quiet HEAD; then
             git commit -m "chore: auto-format problem READMEs [skip ci]"

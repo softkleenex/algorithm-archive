@@ -13,9 +13,9 @@ CONTEST_ID=$(echo "$1" | tr '[:upper:]' '[:lower:]')
 echo "============================================="
 echo " 1. [acc] 폴더 및 테스트 케이스(예제) 다운로드 중..."
 echo "============================================="
-# content/atcoder 폴더로 이동해서 생성
-mkdir -p content/atcoder
-cd content/atcoder || exit 1
+# problems/atcoder 폴더로 이동해서 생성
+mkdir -p problems/atcoder
+cd problems/atcoder || exit 1
 acc new "$CONTEST_ID" -c all
 
 echo ""
@@ -27,4 +27,4 @@ cd ../..
 python3 scripts/fetch_atcoder.py "$CONTEST_ID" --acc-mode
 
 echo ""
-echo "✨ 완료되었습니다! content/atcoder/$CONTEST_ID/ 폴더 안을 확인해주세요."
+echo "✨ 완료되었습니다! problems/atcoder/$CONTEST_ID/ 폴더 안을 확인해주세요."

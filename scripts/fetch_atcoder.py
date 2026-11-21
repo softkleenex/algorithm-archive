@@ -59,12 +59,12 @@ def main():
         title, content = result
         
         if args.acc_mode:
-            # acc new abc455 로 생성된 폴더 구조 사용: content/atcoder/abc455/a/README.md
-            target_dir = os.path.join("content", "atcoder", contest_id, task_id)
+            # acc new abc455 로 생성된 폴더 구조 사용: problems/atcoder/abc455/a/README.md
+            target_dir = os.path.join("problems", "atcoder", contest_id, task_id)
             os.makedirs(target_dir, exist_ok=True)
             file_path = os.path.join(target_dir, f"{task_id.upper()}.md")
         else:
-            target_dir = os.path.join("content", "atcoder", contest_id)
+            target_dir = os.path.join("problems", "atcoder", contest_id)
             os.makedirs(target_dir, exist_ok=True)
             file_path = os.path.join(target_dir, f"{task_id.upper()}.md")
             

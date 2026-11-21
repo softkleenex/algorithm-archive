@@ -21,7 +21,7 @@ def get_problem_info(filepath):
     title = os.path.basename(filepath).replace(".md", "")
     difficulty = "-"
     
-    # Path example: content/백준/Bronze/1000. A＋B/README.md
+    # Path example: problems/백준/Bronze/1000. A＋B/README.md
     parts = filepath.split('/')
     if "백준" in parts:
         platform = "Baekjoon"
@@ -57,7 +57,7 @@ def get_problem_info(filepath):
     }
 
 def update_readme():
-    files = glob.glob("content/백준/**/*.md", recursive=True) + glob.glob("content/atcoder/**/*.md", recursive=True)
+    files = glob.glob("problems/백준/**/*.md", recursive=True) + glob.glob("problems/atcoder/**/*.md", recursive=True)
     files = [f for f in files if not f.endswith("index.md")]
     
     problems = []

@@ -214,7 +214,7 @@ def main():
     updated_count = 0
     
     # 1. Process README.md files
-    readmes = glob.glob("content/백준/**/README.md", recursive=True) + glob.glob("content/atcoder/**/README.md", recursive=True)
+    readmes = glob.glob("problems/백준/**/README.md", recursive=True) + glob.glob("problems/atcoder/**/README.md", recursive=True)
     for readme in readmes:
         if format_readme(readme):
             updated_count += 1
@@ -223,8 +223,8 @@ def main():
     # 2. Process standalone code files (like AtCoder files without README)
     code_files = []
     for ext in [".py", ".cc", ".cpp", ".java", ".c"]:
-        code_files.extend(glob.glob(f"content/백준/**/*{ext}", recursive=True))
-        code_files.extend(glob.glob(f"content/atcoder/**/*{ext}", recursive=True))
+        code_files.extend(glob.glob(f"problems/백준/**/*{ext}", recursive=True))
+        code_files.extend(glob.glob(f"problems/atcoder/**/*{ext}", recursive=True))
         
     for code_file in code_files:
         if create_md_for_standalone_code(code_file):
