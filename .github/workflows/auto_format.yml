@@ -33,9 +33,12 @@ jobs:
         run: |
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git add problems/
-          # Only commit if there are changes
-          if ! git diff-index --quiet HEAD; then
+          # README.md 도 스테이징한다. update_readme.py 가 고치는 파일인데
+          # 여기서 빠뜨리면, 변경은 감지되지만 커밋할 게 없어 exit 1 로 죽는다.
+          git add problems/ README.md
+          # 인덱스를 본다 (git diff-index HEAD 는 스테이징 안 된 변경까지 세어
+          # 커밋할 게 없는데도 분기 안으로 들어간다).
+          if ! git diff --cached --quiet; then
             git commit -m "chore: auto-format problem READMEs [skip ci]"
             git push
           fi

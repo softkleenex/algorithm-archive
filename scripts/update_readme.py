@@ -1,6 +1,7 @@
 import os
 import glob
 import re
+import unicodedata
 import urllib.parse
 import subprocess
 import time
@@ -16,6 +17,12 @@ def force_icloud_download(filepath):
         return False
 
 def get_problem_info(filepath):
+    # macOS 는 한글 파일명을 자모 분해형으로 돌려주고 git 은
+    # core.precomposeunicode 로 NFC 로 저장한다. 정규화하지 않으면
+    # 로컬에서 만든 링크와 CI(Linux 체크아웃)에서 만든 링크의
+    # 퍼센트 인코딩이 달라져 README 가 매번 서로를 덮어쓴다.
+    filepath = unicodedata.normalize("NFC", filepath)
+
     platform = "Unknown"
     pid = "-"
     title = os.path.basename(filepath).replace(".md", "")
