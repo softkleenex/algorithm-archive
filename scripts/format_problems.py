@@ -73,7 +73,7 @@ def format_readme(readme_path):
             pass
 
     # Check if already formatted
-    if "---" in content[:10] or "## 💡" in content:
+    if "---" in content[:10] or "## 💻 코드" in content:
         if code_content and "## 💻 코드" in content:
             parts = content.split("## 💻 코드")
             new_content = parts[0] + f"## 💻 코드\n\n```{language}\n{code_content}\n```\n"
@@ -102,9 +102,6 @@ tags: ["{platform}", "{difficulty}"]
     custom_sections = f"""
 
 ---
-
-## 💡 해결 방법
-<!-- 이 문제에 대한 접근 방식과 풀이를 작성하세요 -->
 
 ## 💻 코드
 
@@ -195,9 +192,6 @@ tags: ["{platform}", "{difficulty}"]
 이 문제는 {platform}에서 푼 문제입니다. {contest_info}
 
 ---
-
-## 💡 해결 방법
-<!-- 이 문제에 대한 접근 방식과 풀이를 작성하세요 -->
 
 ## 💻 코드
 

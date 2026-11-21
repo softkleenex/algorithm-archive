@@ -13,8 +13,6 @@ tags: ["AtCoder", "abc457"]
 
 ---
 
-## 💡 해결 방법
-<!-- 이 문제에 대한 접근 방식과 풀이를 작성하세요 -->
 When solving this problem, keep in mind that the x and y coordinates in the problem description are reversed compared to Python's 2D list indexing.
 
 

@@ -34,12 +34,13 @@
 
 ## ⚙️ 자동화 파이프라인 (Automated Workflow)
 
-이 블로그 시스템은 개발자의 개입을 최소화하도록 설계되었습니다.
+사람 손이 들어가지 않는다. 문제를 풀면 저장소에 쌓이는 것까지가 전부다.
 
-1. **Solve & Auto-Push:** [BaekjoonHub](https://github.com/BaekjoonHub/BaekjoonHub) 익스텐션을 통해 플랫폼에서 문제를 해결하면 자동으로 저장소에 소스 코드가 커밋됩니다.
-2. **Auto-Formatting:** 새로운 코드가 푸시되면 봇이 파이썬 스크립트(`scripts/format_problems.py`)를 실행하여, 소스 코드를 SEO에 최적화된 마크다운 템플릿 안으로 병합합니다.
-3. **Review & Write:** 로컬 PC 또는 모바일에서 **옵시디언(Obsidian)** 을 켜고, 템플릿 안의 `💡 해결 방법` 영역에 회고를 기록합니다.
-4. **Archive:** `git push`로 이 저장소에 보관합니다. 웹 배포는 하지 않습니다 (문제 설명이 원 사이트 발췌라 공개 게시 대상이 아닙니다). 글로 남길 만한 내용은 직접 쓴 회고로 [블로그](https://softkleenex.github.io/posts/)에 올립니다.
+1. **Solve & Auto-Push:** [BaekjoonHub](https://github.com/BaekjoonHub/BaekjoonHub) 익스텐션이 정답 처리된 문제의 소스 코드를 저장소에 자동 커밋한다.
+2. **Auto-Formatting:** `scripts/format_problems.py` 가 코드를 마크다운으로 병합하고, `scripts/update_readme.py` 가 위 통계판을 다시 만든다. 둘 다 `auto_format.yml` 이 돌린다.
+3. **Archive:** 여기까지다. 웹 배포는 하지 않는다 — 문제 설명이 원 사이트 발췌라 공개 게시 대상이 아니다.
+
+문제별 회고란은 두지 않는다. 풀이 과정은 코드와 그 주석으로 남고, 따로 적어 둘 칸을 만들어도 쓰지 않았다(382문제 중 0건). 글로 쓸 만한 게 생기면 그때 [블로그](https://softkleenex.github.io/posts/)에서 형식을 정해 직접 쓴다.
 
 ---
 

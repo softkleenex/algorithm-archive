@@ -82,9 +82,6 @@ tags: ["AtCoder", "{contest_id.upper()}"]
         footer = f"""
 ---
 
-## 💡 해결 방법
-<!-- 이 문제에 대한 접근 방식과 풀이를 작성하세요 -->
-
 ## 💻 코드
 
 ```python
